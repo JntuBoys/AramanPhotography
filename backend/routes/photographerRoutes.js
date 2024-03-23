@@ -1,5 +1,11 @@
 const express = require('express')
 const router = express.Router()
+const bodyParser = require('body-parser');
+
+const app = express();
+
+// Parse JSON bodies
+app.use(bodyParser.json());
 const {
     testController,
     photographerLogin,

@@ -1,9 +1,6 @@
 const express = require("express");
 const { default: mongoose } = require("mongoose");
 const UserRegistration = new mongoose.Schema({
-  image: {
-    type: String,
-  },
   username: {
     type: String,
     required: true,
@@ -12,15 +9,11 @@ const UserRegistration = new mongoose.Schema({
     type: String,
     required: true,
   },
-  repassword: {
-    type: String,
-    required: true,
-  },
   email: {
     type: String,
     required: true,
   },
-  phone: {
+  roleId: {
     type: String,
     required: true,
   },

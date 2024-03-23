@@ -2,12 +2,17 @@ fieldset {
   background-color:white;
 }
 legend {
-  padding: 5px 10px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  top: 20px;
+  position: relative;
+  padding-bottom: 12px;
 }
 input[type="text"],
 [type="password"] {
   width: 100%;
-  border-radius: 1.2rem;
+  border-radius: 10px;
   padding: 12px 12px;
   cursor: pointer;
   border: 1px solid rgb(60, 179, 188);
@@ -20,7 +25,19 @@ input:focus{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  top: 20px;
+  position: relative;
+  width: 100%;
 }
+.container-fluid .nav .row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 120%;
+  top:0
+}
+
 
 @media only screen and (max-width: 500px) {
   .card {
@@ -38,20 +55,23 @@ input:focus{
 
 @media only screen and (min-width: 900px) {
   .card {
-    width: 25%;
+    width: 35%;
     margin: auto;
   }
 }
-.btn
+.btn1
 {
-    margin-left: 35%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 20%;
 }
 .btn:hover{
     background-color: rgb(60, 179, 188);
     color: white;
 }
 
-.row {
+.container-fluid .nav .row {
   border-bottom: 4px solid rgb(218, 212, 212);
   flex-direction: revert;
 }
@@ -61,7 +81,9 @@ input:focus{
   display: inline-block;
   cursor: pointer;
 }
-
+.container-fluid .nav .row.col {
+  width: 0;
+}
 .dropdown-content {
   display: none;
   position: absolute;
@@ -112,4 +134,10 @@ input:focus{
   .enr {
     margin-top: 40px;
   }
+}
+.para{
+   align-items: center;
+display: flex;
+ justify-content: center;
+ margin-top: 10 !important; 
 }
