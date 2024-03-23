@@ -108,81 +108,81 @@ app.get('/hellorey', (req, res) => {
     res.send('hello')
 })
 
-app.post('/register', upload.single('image'), async (req, res) => {
-    const path = req.file.path
-    var image = path.replace(/\\/g, '/')
-    var img = fs.readFileSync(image)
+// app.post('/register', upload.single('image'), async (req, res) => {
+//     const path = req.file.path
+//     var image = path.replace(/\\/g, '/')
+//     var img = fs.readFileSync(image)
 
-    var encode_image = img.toString('base64')
+//     var encode_image = img.toString('base64')
 
-    // Define a JSONobject for the image attributes for saving to database
+//     // Define a JSONobject for the image attributes for saving to database
 
-    var finalImg = {
-        contentType: req.file.mimetype,
+//     var finalImg = {
+//         contentType: req.file.mimetype,
 
-        images: Buffer.from(encode_image, 'base64'),
-    }
+//         images: Buffer.from(encode_image, 'base64'),
+//     }
 
-    const { username, password, repassword, email, phone } = req.body
-    const userDB = await UserRegistration.findOne({ username })
+//     const { username, password, repassword, email, phone } = req.body
+//     const userDB = await UserRegistration.findOne({ username })
 
-    if (userDB) {
-        res.send('Username already exists')
-    } else {
-        const Registration = new UserRegistration({
-            image,
-            username,
-            password,
-            repassword,
-            email,
-            phone,
-        })
-            .save()
-            .then((result) => {
-                if (result) {
-                    var transporter = nodemailer.createTransport({
-                        host: 'smtp.gmail.com',
-                        port: 465,
-                        secure: true,
-                        auth: {
-                            user: 'manikumar81796@gmail.com',
-                            pass: 'cnnsapjgbrilpywm',
-                        },
-                    })
+//     if (userDB) {
+//         res.send('Username already exists')
+//     } else {
+//         const Registration = new UserRegistration({
+//             image,
+//             username,
+//             password,
+//             repassword,
+//             email,
+//             phone,
+//         })
+//             .save()
+//             .then((result) => {
+//                 if (result) {
+//                     var transporter = nodemailer.createTransport({
+//                         host: 'smtp.gmail.com',
+//                         port: 465,
+//                         secure: true,
+//                         auth: {
+//                             user: 'manikumar81796@gmail.com',
+//                             pass: 'cnnsapjgbrilpywm',
+//                         },
+//                     })
 
-                    var mailOptions = {
-                        from: 'manikumar81796@gmail.com',
-                        to: email,
-                        subject: 'Sending Email using Node.js',
-                        html: `<div class="card"><h1>PHOTOGRAPHERS HUB</h1>
-            <div>
-            <p>Thank you for registering....</p>
-            <p>Now you became a member of photographers hub</p>
-            <img src="cid:firstpic" width="300" height="300">
-            </div>
-            </div>`,
-                        attachments: [
-                            {
-                                filename: 'firstpic.jpeg',
-                                path: '../assets/images/firstpic.jpeg',
-                                cid: 'firstpic',
-                            },
-                        ],
-                    }
+//                     var mailOptions = {
+//                         from: 'manikumar81796@gmail.com',
+//                         to: email,
+//                         subject: 'Sending Email using Node.js',
+//                         html: `<div class="card"><h1>PHOTOGRAPHERS HUB</h1>
+//             <div>
+//             <p>Thank you for registering....</p>
+//             <p>Now you became a member of photographers hub</p>
+//             <img src="cid:firstpic" width="300" height="300">
+//             </div>
+//             </div>`,
+//                         attachments: [
+//                             {
+//                                 filename: 'firstpic.jpeg',
+//                                 path: '../assets/images/firstpic.jpeg',
+//                                 cid: 'firstpic',
+//                             },
+//                         ],
+//                     }
 
-                    transporter.sendMail(mailOptions, function (error, info) {
-                        if (error) {
-                            console.log(error)
-                        } else {
-                            console.log('Email sent: ' + info.response)
-                        }
-                        console.log(result)
-                        res.json({ data: result })
-                    })
-                } else console.log(err)
-            })
-    }
-})
+//                     transporter.sendMail(mailOptions, function (error, info) {
+//                         if (error) {
+//                             console.log(error)
+//                         } else {
+//                             console.log('Email sent: ' + info.response)
+//                         }
+//                         console.log(result)
+//                         res.json({ data: result })
+//                     })
+//                 } else console.log(err)
+//             })
+//     }
+// })
 app.post('/login', async (req, res) => {
     const { username, password } = req.body
     const userDB = await UserRegistration.findOne(
@@ -202,15 +202,15 @@ app.post('/login', async (req, res) => {
     }
 })
 
-app.get('/allprofiles', async (req, res) => {
-    console.log(req.params.username)
-    console.log('hello')
-    await UserRegistration.find()
-        .then((retrievedata) => {
-            res.send({ retrievedata: retrievedata, data: id1 })
-        })
-        .catch((err) => console.log(err))
-})
+// app.get('/allprofiles', async (req, res) => {
+//     console.log(req.params.username)
+//     console.log('hello')
+//     await UserRegistration.find()
+//         .then((retrievedata) => {
+//             res.send({ retrievedata: retrievedata, data: id1 })
+//         })
+//         .catch((err) => console.log(err))
+// })
 
 // app.delete('/del', async (req, res) => {
 //     await UserRegistration.deleteMany({})

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs';
+import { catchError, timeout } from 'rxjs/operators';
 import { FormGroup } from '@angular/forms'
 
 @Injectable({
@@ -10,7 +11,27 @@ export class ServicesService {
     constructor(private http: HttpClient) {}
 
     register(Registerform: any): Observable<any> {
-        return this.http.post('http://localhost:3001/register', Registerform)
+        const timeoutValue = 10000;
+        const requestOptions = {
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            // Set timeout value
+            timeout: timeoutValue
+          };
+        console.log("hdhd",Registerform)
+        return this.http.post('/api/photographer/register', Registerform,requestOptions).pipe(
+            catchError((error: any) => {
+              if (error.name === 'TimeoutError') {
+                console.error('Request timed out:', error);
+                // Handle timeout error
+                // For example, you can return a custom error message
+
+              // For other errors, propagate the error
+              return error;
+              }
+            })
+          )
     }
     reserv(form1: any): Observable<any> {
         return this.http.post('common/reserv', form1)

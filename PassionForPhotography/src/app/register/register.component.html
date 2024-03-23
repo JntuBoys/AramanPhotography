@@ -16,91 +16,76 @@
     </div>
   </nav>
 </div>
-
-<div class="card mt-5 rounded-4 shadow box-area p-5 bg-white">
-  <form
-    [formGroup]="Registerform"
-    (ngSubmit)="submit(Registerform)"
-    method="post"
-    enctype="multipart/form-data"
-  >
-    <fieldset>
-      <legend>REGISTER:</legend>
-      <div class="row1">
-        <div class="profile-pic">
-          <img class="img-circle" [src]="url" id="output" accept="images/*" />
-          <input
-            type="file"
-            id="file"
-            name="image"
-            formControlName="image"
-            (change)="loadFile($event)"
-          />
-          <br />
-          <label for="file">Upload</label>
+<div style="display: flex;
+background-color: #797777;
+height: 660px;">
+  <img style ="top: 96px;
+  position: relative;
+  left: 250px;
+  height: 400px;"src="../../assets/images/RegImage1-removebg.png">
+  <div class="card mt-5 rounded-4 shadow box-area p-5 bg-white">
+    <form
+      [formGroup]="Registerform"
+      (ngSubmit)="submit(Registerform)"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <fieldset>
+        <legend>REGISTER:</legend>
+        <div class="row1">
+          <div class="mb-3">
+            <input
+              type="text"
+              placeholder="Enter user name"
+              formControlName="username"
+              required
+            /><br />
+          </div>
+          <div class="mb-4">
+            <input
+              type="password"
+              placeholder="Enter password"
+              formControlName="password"
+              required
+            /><br />
+          </div>
+          <div class="mb-4">
+            <input
+              type="email"
+              placeholder="enter email"
+              formControlName="email"
+              required
+            />
+            <span
+              style="color: rgb(232, 225, 225); background-color: red"
+              *ngIf="email1 && email1.invalid && email1.touched"
+              >* email is required</span
+            ><br />
+          </div>
+          <div >
+            <mat-form-field style="width: 98%;" appearance="outline">
+              <mat-label>Please Select Your Role</mat-label>
+              <mat-select formControlName="role" required (selectionChange)="onRoleChange($event.value)">
+                <mat-option value="ph001">Photographer</mat-option>
+                <mat-option value="User001">User</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="btn1">
+            <button
+              class="btn border-info"
+              type="submit"
+              [disabled]="!Registerform.valid"
+            >
+              submit
+            </button>
+          </div>
+          <div class="Hacnt">
+            <p>Already have an account?<a routerLink="/login">Login</a></p>
+          </div>
         </div>
-        <br />
-        <div class="mb-3">
-          <input
-            type="text"
-            placeholder="Enter user name"
-            formControlName="username"
-            required
-          /><br />
-        </div>
-        <div class="mb-4">
-          <input
-            type="password"
-            placeholder="Enter password"
-            formControlName="password"
-            required
-          /><br />
-        </div>
-
-        <div class="mb-4">
-          <input
-            type="password"
-            placeholder="Re Enter password"
-            formControlName="repassword"
-            required
-          />
-          <br />
-        </div>
-        <div class="mb-4">
-          <input
-            type="email"
-            placeholder="enter email"
-            formControlName="email"
-            required
-          />
-          <span
-            style="color: rgb(232, 225, 225); background-color: red"
-            *ngIf="email1 && email1.invalid && email1.touched"
-            >* email is required</span
-          ><br />
-        </div>
-        <div class="mb-4">
-          <input
-            type="tel"
-            placeholder="Enter phone number"
-            formControlName="phone"
-            required
-          /><br />
-        </div>
-
-        <div class="btn1">
-          <button
-            class="btn border-info"
-            type="submit"
-            [disabled]="!Registerform.valid"
-          >
-            submit
-          </button>
-        </div>
-        <div>
-          <p>Already have an account?<a routerLink="/login">Login</a></p>
-        </div>
-      </div>
-    </fieldset>
-  </form>
+      </fieldset>
+    </form>
+  </div>
+  
 </div>

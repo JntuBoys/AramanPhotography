@@ -91,8 +91,8 @@ input[type="text"],
 [type="password"],
 [type="email"],
 [type="tel"] {
-  width: 97%;
-  border-radius: 1.2rem;
+  width: 98%;
+  border-radius: 5px;
   padding: 12px 12px;
   cursor: pointer;
   border: 1px solid rgb(60, 179, 188);
@@ -101,12 +101,7 @@ input[type="text"],
 input:focus {
   cursor: none;
 }
-.row1 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+
 
 @media only screen and (max-width: 576px) {
   .card {
@@ -193,22 +188,41 @@ input:focus {
     height: 83px;
   }
   .card {
-    width: 30%;
-    margin: auto;
+    width: 35%;
+    float: right;
+    right: -510px;
+    top: 40px;
+    height: 480px;
   }
 }
-.btn1 .btn {
-  margin-left: -7%;
+ .btn {
+  margin: auto;
+  width: 17%;
+  align-items: center;
+  display: flex;
 }
 .btn:hover {
   background-color: rgb(60, 179, 188);
   color: white;
 }
 form {
-  height: 300px;
-  overflow: auto;
+  height: 500px;
+  top:-20px;
+  position:relative;
 }
 ::-webkit-scrollbar {
   display: none;
 }
-
+.mat-mdc-text-field-wrapper
+{
+  width:90.6%;
+}
+.Hacnt p{
+  align-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+body{
+  background-image: url('../../assets/images/bgImage.jpg');
+}
